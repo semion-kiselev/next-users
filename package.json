@@ -12,7 +12,7 @@
     "pg:start": "docker start next_users",
     "pg:stop": "docker stop next_users",
     "pg:connect": "PGPASSWORD=kiselev psql -h localhost -p 5432 -d postgres -U semion",
-    "pg:migrate": "node src/bin/migrate.js",
+    "pg:migrate": "node src/bin/migrate.mjs",
     "prepare": "husky install"
   },
   "dependencies": {
