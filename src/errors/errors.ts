@@ -26,6 +26,7 @@ export const badRequest = getAPiErrorCreator(StatusCodes.BAD_REQUEST);
 export const unauthorized = getAPiErrorCreator(StatusCodes.UNAUTHORIZED);
 export const forbidden = getAPiErrorCreator(StatusCodes.FORBIDDEN);
 export const notFound = getAPiErrorCreator(StatusCodes.NOT_FOUND);
+export const conflict = getAPiErrorCreator(StatusCodes.CONFLICT);
 export const serverError = getAPiErrorCreator(
   StatusCodes.INTERNAL_SERVER_ERROR,
 );

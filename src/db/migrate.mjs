@@ -18,7 +18,7 @@ async function main() {
     await client.connect();
 
     const postgrator = new Postgrator({
-      migrationPattern: join(__dirname, "../migrations/*"),
+      migrationPattern: join(__dirname, "./migrations/*"),
       driver: "pg",
       database: "postgres",
       schemaTable: "migrations",
