@@ -1,5 +1,5 @@
 import { pool } from "@/db/db";
-import { LoginPayloadType } from "@/domain/auth/schemas/login";
+import { LoginPayloadType } from "@/domain/auth/types";
 
 export const getUserId = async ({ email, password }: LoginPayloadType) => {
   return pool

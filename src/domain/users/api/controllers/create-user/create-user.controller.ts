@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authorize } from "@/domain/auth/utils/authorize";
 import { createUser } from "@/domain/users/api/controllers/create-user/create-user.service";
-import {
-  CreateUserPayload,
-  CreateUserPayloadType,
-} from "@/domain/users/schemas/user";
+import { CreateUserPayload } from "@/domain/users/schemas/user";
+import { CreateUserPayloadType } from "@/domain/users/types";
 import { catchConflict } from "@/errors/catch-conflict";
 import { catchErrors } from "@/errors/catch-errors";
 import { catchFKViolation } from "@/errors/catch-fk-violation";

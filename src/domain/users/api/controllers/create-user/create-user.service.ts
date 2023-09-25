@@ -1,17 +1,8 @@
 import format from "pg-format";
 import { pool } from "@/db/db";
-import { CreateUserPayloadType, User } from "@/domain/users/schemas/user";
-import { omit, toCamelCase } from "@/utils/entity";
-
-type UserFromDb = {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  created_at: string;
-  updated_at: string;
-  token_expired_at: string;
-};
+import { CreateUserPayloadType } from "@/domain/users/types";
+import { User, UserFromDb } from "@/domain/users/types";
+import { normalizeUser } from "@/domain/users/utils/normalize-user";
 
 export const createUser = async ({
   name,
@@ -47,9 +38,7 @@ export const createUser = async ({
 
     await client.query("COMMIT");
 
-    return toCamelCase(
-      omit({ ...user, permissions }, ["token_expired_at", "password"]),
-    ) as User;
+    return normalizeUser({ ...user, permissions });
   } catch (e) {
     await client.query("ROLLBACK");
     throw e;

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getUserId } from "@/domain/auth/api/controllers/login/login.service";
-import { LoginPayload, LoginPayloadType } from "@/domain/auth/schemas/login";
+import { LoginPayload } from "@/domain/auth/schemas/login";
+import { LoginPayloadType } from "@/domain/auth/types";
 import { catchErrors } from "@/errors/catch-errors";
 import { unauthorized } from "@/errors/errors";
 import { jwt } from "@/utils/api/jwt";

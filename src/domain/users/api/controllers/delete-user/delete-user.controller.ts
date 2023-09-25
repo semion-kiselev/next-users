@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authorize } from "@/domain/auth/utils/authorize";
 import { deleteUser } from "@/domain/users/api/controllers/delete-user/delete-user.service";
-import {
-  DeleteUserParams,
-  DeleteUserParamsType,
-} from "@/domain/users/schemas/user";
+import { DeleteUserParams } from "@/domain/users/schemas/user";
+import { DeleteUserParamsType } from "@/domain/users/types";
 import { catchErrors } from "@/errors/catch-errors";
 import { notFound } from "@/errors/errors";
 import { TOKEN_COOKIE_NAME } from "@/utils/api/token-cookie";
