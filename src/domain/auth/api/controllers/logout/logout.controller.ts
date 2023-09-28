@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { pool } from "@/db/db";
 import { catchErrors } from "@/errors/catch-errors";
 import { unauthorized } from "@/errors/errors";
 import { jwt } from "@/utils/api/jwt";
@@ -11,11 +12,14 @@ export const logoutController = catchErrors(async (req: NextRequest) => {
     throw unauthorized();
   }
 
-  await jwt.verify(token).catch(() => {
+  const { userId } = await jwt.verify<{ userId: number }>(token).catch(() => {
     throw unauthorized();
   });
 
-  // todo: set token_expired_at to now()
+  await pool.query(
+    "UPDATE employee SET token_expired_at=now()::timestamptz WHERE id = $1",
+    [userId],
+  );
 
   return new NextResponse(null, {
     headers: tokenCookie.getHeader(token, { unset: true }),

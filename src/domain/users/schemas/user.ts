@@ -7,6 +7,8 @@ export const CreateUserPayload = z.object({
   permissions: z.array(z.string().length(2)).min(1),
 });
 
+export const UpdateUserPayload = CreateUserPayload.partial();
+
 export const DeleteUserParams = z.object({
   id: z.coerce.number().positive().max(2147483647),
 });
