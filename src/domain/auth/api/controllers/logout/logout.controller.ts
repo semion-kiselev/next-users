@@ -22,6 +22,6 @@ export const logoutController = catchErrors(async (req: NextRequest) => {
   );
 
   return new NextResponse(null, {
-    headers: tokenCookie.getHeader(token, { unset: true }),
+    headers: tokenCookie.setHeader(token, { unset: true }),
   });
 });

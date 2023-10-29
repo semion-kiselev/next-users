@@ -22,6 +22,6 @@ export const loginController = catchErrors(async (req: NextRequest) => {
   const token = await jwt.sign({ userId });
 
   return new NextResponse(null, {
-    headers: tokenCookie.getHeader(token),
+    headers: tokenCookie.setHeader(token),
   });
 });

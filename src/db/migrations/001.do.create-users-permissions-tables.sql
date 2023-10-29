@@ -19,11 +19,3 @@ CREATE TABLE IF NOT EXISTS employee_permission (
     permission_id                   char(2) NOT NULL REFERENCES permission(id) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (employee_id, permission_id)
 );
-
-CREATE TABLE IF NOT EXISTS session (
-    employee_id                     int PRIMARY KEY REFERENCES employee(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    access_token                    text NOT NULL,
-    refresh_token                   text NOT NULL,
-    access_token_expired_at         timestamptz NOT NULL,
-    refresh_token_expired_at        timestamptz NOT NULL
-);

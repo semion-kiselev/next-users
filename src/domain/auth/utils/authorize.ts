@@ -25,13 +25,17 @@ export const authorize = async ({ token, guardPermissions }: Params) => {
     throw unauthorized();
   }
 
+  if (guardPermissions.length === 0) {
+    return userId;
+  }
+
   const userPermissions = await getUserPermissions(userId);
 
   if (!getIfHasAccess(userPermissions, guardPermissions)) {
     throw forbidden();
   }
 
-  return true;
+  return userId;
 };
 
 function getIfHasAccess(userPermissions: string[], guardPermissions: string[]) {

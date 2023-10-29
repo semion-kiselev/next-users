@@ -10,8 +10,7 @@ async function main() {
     host: "localhost",
     port: 5432,
     database: "postgres",
-    user: "semion",
-    password: "kiselev",
+    user: "postgres",
   });
 
   try {
